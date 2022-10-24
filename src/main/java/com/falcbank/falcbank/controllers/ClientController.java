@@ -1,7 +1,7 @@
-package com.falcbank.falcbank.Controllers;
+package com.falcbank.falcbank.controllers;
 
 import com.falcbank.falcbank.dtos.ClientDtoRequest;
-import com.falcbank.falcbank.service.ClientService;
+import com.falcbank.falcbank.services.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,6 @@
 package com.falcbank.falcbank.models;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -16,13 +15,13 @@ public class ClientModel {
     @Column(nullable = false, unique = true, length = 10)
     private String name;
     @Column(nullable = false, unique = true, length =11)
-    private String cpf_cnpj;
+    private String cpfCnpj;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
-    private String type_account;
+    private String typeAccount;
     @Column(nullable = false, length = 30)
     private LocalDateTime registrationDate;
 
@@ -32,20 +31,20 @@ public class ClientModel {
     public ClientModel() {
         this.id = id;
         this.name = name;
-        this.cpf_cnpj = cpf_cnpj;
+        this.cpfCnpj = cpfCnpj;
         this.email = email;
         this.password = password;
-        this.type_account = type_account;
+        this.typeAccount = typeAccount;
         this.registrationDate = registrationDate;
     }
 
 
-    public String getType_account() {
-        return type_account;
+    public String getTypeAccount() {
+        return typeAccount;
     }
 
-    public void setType_account(String type_account) {
-        this.type_account = type_account;
+    public void setTypeAccount(String typeAccount) {
+        this.typeAccount = typeAccount;
     }
 
     public UUID getId() {
@@ -64,12 +63,12 @@ public class ClientModel {
         this.name = name;
     }
 
-    public String getCpf_cnpj() {
-        return cpf_cnpj;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public void setCpf_cnpj(String cpf_cnpj) {
-        this.cpf_cnpj = cpf_cnpj;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
     public String getEmail() {

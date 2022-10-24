@@ -1,4 +1,4 @@
-package com.falcbank.falcbank.service;
+package com.falcbank.falcbank.services;
 
 import com.falcbank.falcbank.dtos.ClientDtoRequest;
 import com.falcbank.falcbank.models.ClientModel;

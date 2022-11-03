@@ -8,21 +8,21 @@ public class ClientDtoRequest {
     private String name;
     @NotBlank(message = "O campo não pode ser vazio ou nulo")
     @Size(max = 11)
-    private String cpf_cnpj;
+    private String cpfCnpj;
     @NotBlank(message = "O campo não pode ser vazio ou nulo")
     private String email;
     @NotBlank(message = "O campo não pode ser vazio ou nulo")
     private String password;
 
     @NotBlank(message = "O campo não pode ser vazio ou nulo")
-    private String type_account;
+    private String typeAccount;
 
-    public String getType_account() {
-        return type_account;
+    public String getTypeAccount() {
+        return typeAccount;
     }
 
-    public void setType_account(String type_account) {
-        this.type_account = type_account;
+    public void setTypeAccount(String typeAccount) {
+        this.typeAccount = typeAccount;
     }
 
     public String getName() {
@@ -33,12 +33,12 @@ public class ClientDtoRequest {
         this.name = name;
     }
 
-    public String getCpf_cnpj() {
-        return cpf_cnpj;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public void setCpf_cnpj(String cpf_cnpj) {
-        this.cpf_cnpj = cpf_cnpj;
+    public void setCpf_cnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
     public String getEmail() {

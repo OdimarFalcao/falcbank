@@ -11,7 +11,7 @@ public class ClientModel {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private long id;
     @Column(nullable = false, unique = true, length = 10)
     private String name;
     @Column(nullable = false, unique = true, length =11)
@@ -47,11 +47,11 @@ public class ClientModel {
         this.typeAccount = typeAccount;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 

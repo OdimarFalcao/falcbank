@@ -13,14 +13,14 @@ import javax.validation.Valid;
 @RequestMapping("/falc-bank")
 public class ClientController {
 
-    final ClientService bankService;
+    final ClientService clientService;
 
     public ClientController(ClientService bankService) {
-        this.bankService = bankService;
+        this.clientService = bankService;
     }
 
     @PostMapping
     public ResponseEntity<Object> saveClient(@RequestBody @Valid ClientDtoRequest clientDtoRequest){
-        return ResponseEntity.status(HttpStatus.CREATED).body(bankService.saveCB(clientDtoRequest));
+        return ResponseEntity.status(HttpStatus.CREATED).body(clientService.saveCB(clientDtoRequest));
     }
 }

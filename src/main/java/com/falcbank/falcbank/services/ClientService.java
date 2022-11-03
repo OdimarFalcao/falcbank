@@ -13,17 +13,17 @@ import java.time.ZoneId;
 @Service
 public class ClientService {
 
-    final ClientRepository bankRepository;
+    final ClientRepository clientRepository;
 
     public ClientService(ClientRepository bankRepository){
-        this.bankRepository = bankRepository;
+        this.clientRepository = bankRepository;
     }
 
     @Transactional
-    public ClientModel saveCB(ClientDtoRequest clientDtoRequest) {
+    public ClientModel saveClient(ClientDtoRequest clientDtoRequest) {
         ClientModel clientModel = new ClientModel();
         BeanUtils.copyProperties(clientDtoRequest, clientModel);
         clientModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
-        return bankRepository.save(clientModel);
+        return clientRepository.save(clientModel);
     }
 }

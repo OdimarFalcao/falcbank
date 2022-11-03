@@ -2,28 +2,28 @@ package com.falcbank.falcbank.models;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 
 @Entity
-@Table(name="TB_CLIENTBANK")
+@Table(name="CLIENT")
 public class ClientModel {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private long id;
     @Column(nullable = false, unique = true, length = 10)
     private String name;
-    @Column(nullable = false, unique = true, length =11)
+    @Column(nullable = false, unique = true, length =11,name = "cpfCnpj")
     private String cpfCnpj;
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = false)
-    private String typeAccount;
+    @Column(nullable = false,name = "typeUser")
+    private String typeUser;
     @Column(nullable = false, length = 30)
     private LocalDateTime registrationDate;
+
 
 
 
@@ -34,24 +34,24 @@ public class ClientModel {
         this.cpfCnpj = cpfCnpj;
         this.email = email;
         this.password = password;
-        this.typeAccount = typeAccount;
+        this.typeUser = typeUser;
         this.registrationDate = registrationDate;
     }
 
 
-    public String getTypeAccount() {
-        return typeAccount;
+    public String getTypeUser() {
+        return typeUser;
     }
 
-    public void setTypeAccount(String typeAccount) {
-        this.typeAccount = typeAccount;
+    public void setTypeUser(String typeUser) {
+        this.typeUser = typeUser;
     }
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 

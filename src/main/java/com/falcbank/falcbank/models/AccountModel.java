@@ -1,44 +1,55 @@
 package com.falcbank.falcbank.models;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 
 @Entity
-@Table(name="TB_ACCOUNTBANK")
+@Table(name="ACCOUNT")
 public class AccountModel {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private long id;
     @Column(nullable = false)
-    private double balance;
+    private BigDecimal balance;
 
     @Column(nullable = false, length = 30)
     private LocalDateTime registrationDate;
 
+    @OneToOne
+    @JoinColumn(nullable = false,unique = true,name = "FKACCOUNTCLIENTE_id")
+    private ClientModel clientModel;
 
     public AccountModel() {
         this.id = id;
         this.balance = balance;
         this.registrationDate = registrationDate;
     }
-
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
+    }
+
+    public ClientModel getClientModel() {
+        return clientModel;
+    }
+
+    public void setClientModel(ClientModel clientModel) {
+        this.clientModel = clientModel;
     }
 
     public LocalDateTime getRegistrationDate() {

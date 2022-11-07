@@ -28,6 +28,7 @@ public class AccountModel {
         this.balance = balance;
         this.registrationDate = registrationDate;
     }
+
     public long getId() {
         return id;
     }

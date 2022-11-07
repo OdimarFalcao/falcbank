@@ -18,18 +18,6 @@ public class ClientDtoRequest {
     @NotBlank(message = "O campo não pode ser vazio ou nulo")
     private String typeUser;
 
-    public void setCpfcnpj(String cpfcnpj) {
-        this.cpfCnpj = cpfcnpj;
-    }
-
-    public String getTypeUser() {
-        return typeUser;
-    }
-
-    public void setTypeUser(String typeUser) {
-        this.typeUser = typeUser;
-    }
-
     public String getName() {
         return name;
     }
@@ -38,11 +26,11 @@ public class ClientDtoRequest {
         this.name = name;
     }
 
-    public String getCpfcnpj() {
+    public String getCpfCnpj() {
         return cpfCnpj;
     }
 
-    public void setCpf_cnpj(String cpfCnpj) {
+    public void setCpfCnpj(String cpfCnpj) {
         this.cpfCnpj = cpfCnpj;
     }
 
@@ -62,5 +50,11 @@ public class ClientDtoRequest {
         this.password = password;
     }
 
+    public String getTypeUser() {
+        return typeUser;
+    }
 
+    public void setTypeUser(String typeUser) {
+        this.typeUser = typeUser;
+    }
 }

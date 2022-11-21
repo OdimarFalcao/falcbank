@@ -1,6 +1,7 @@
 package com.falcbank.falcbank.controllers;
 
-import com.falcbank.falcbank.dtos.ClientDtoRequest;
+import com.falcbank.falcbank.dtos.Request.ClientDtoRequest;
+import com.falcbank.falcbank.dtos.Response.ClientDtoResponse;
 import com.falcbank.falcbank.services.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveClient(@RequestBody @Valid ClientDtoRequest clientDtoRequest){
+    public ResponseEntity<ClientDtoResponse> saveClient(@RequestBody @Valid ClientDtoRequest clientDtoRequest){
         return ResponseEntity.status(HttpStatus.CREATED).body(clientService.saveClient(clientDtoRequest));
     }
 }

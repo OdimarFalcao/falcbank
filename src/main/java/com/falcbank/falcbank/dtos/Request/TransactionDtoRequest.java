@@ -1,4 +1,4 @@
-package com.falcbank.falcbank.dtos;
+package com.falcbank.falcbank.dtos.Request;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -6,9 +6,10 @@ import java.math.BigDecimal;
 public class TransactionDtoRequest {
 
     @NotNull(message = "O campo não pode ser vazio ou nulo")
-    private Long idSender;
-    @NotNull(message = "O campo não pode ser vazio ou nulo")
     private Long idRecepient;
+    @NotNull(message = "O campo não pode ser vazio ou nulo")
+    private Long idSender;
+
     @NotNull(message = "O campo não pode ser vazio ou nulo")
     private BigDecimal valueOperation;
 

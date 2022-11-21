@@ -1,4 +1,4 @@
-package com.falcbank.falcbank.dtos;
+package com.falcbank.falcbank.dtos.Request;
 
 import com.falcbank.falcbank.models.AccountModel;
 

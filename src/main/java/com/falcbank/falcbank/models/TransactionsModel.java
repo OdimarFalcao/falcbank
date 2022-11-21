@@ -16,7 +16,26 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class TransactionsModel {
     private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(nullable = false)
+    private Long idSender;
+    @Column(nullable = false)
+    private Long idRecepient;
+    @Column(nullable = false)
+    private BigDecimal valueOperation;
 
+    @Column(nullable = false, length = 30)
+    private LocalDateTime registrationDate;
+
+    public TransactionsModel(Long id, Long idSender, Long idRecepient, BigDecimal value_operation, LocalDateTime registrationDate) {
+        this.id = id;
+        this.idSender = idSender;
+        this.idRecepient = idRecepient;
+        this.valueOperation = value_operation;
+        this.registrationDate = registrationDate;
+    }
     public Long getId() {
         return id;
     }
@@ -25,20 +44,20 @@ public class TransactionsModel {
         this.id = id;
     }
 
-    public String getCpfCnpjSender() {
-        return cpfCnpjSender;
+    public Long getIdSender() {
+        return idSender;
     }
 
-    public void setCpfCnpjSender(String cpfCnpjSender) {
-        this.cpfCnpjSender = cpfCnpjSender;
+    public void setIdSender(Long idSender) {
+        this.idSender = idSender;
     }
 
-    public String getCpfCnpjRecepient() {
-        return cpfCnpjRecepient;
+    public Long getIdRecepient() {
+        return idRecepient;
     }
 
-    public void setCpfCnpjRecepient(String cpfCnpjRecepient) {
-        this.cpfCnpjRecepient = cpfCnpjRecepient;
+    public void setIdRecepient(Long idRecepient) {
+        this.idRecepient = idRecepient;
     }
 
     public BigDecimal getValueOperation() {
@@ -54,27 +73,6 @@ public class TransactionsModel {
     }
 
     public void setRegistrationDate(LocalDateTime registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(nullable = false)
-    private String cpfCnpjSender;
-    @Column(nullable = false)
-    private String cpfCnpjRecepient;
-    @Column(nullable = false)
-    private BigDecimal valueOperation;
-
-    @Column(nullable = false, length = 30)
-    private LocalDateTime registrationDate;
-
-    public TransactionsModel(Long id, String cpfCnpjSender, String cpfCnpjRecepient, BigDecimal value_operation, LocalDateTime registrationDate) {
-        this.id = id;
-        this.cpfCnpjSender = cpfCnpjSender;
-        this.cpfCnpjRecepient = cpfCnpjRecepient;
-        this.valueOperation = value_operation;
         this.registrationDate = registrationDate;
     }
 }

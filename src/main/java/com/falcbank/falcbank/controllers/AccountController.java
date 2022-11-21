@@ -1,7 +1,9 @@
 package com.falcbank.falcbank.controllers;
 
-import com.falcbank.falcbank.dtos.AccountDtoRequest;
-import com.falcbank.falcbank.dtos.TransactionDtoRequest;
+import com.falcbank.falcbank.dtos.Request.AccountDtoRequest;
+import com.falcbank.falcbank.dtos.Request.TransactionDtoRequest;
+import com.falcbank.falcbank.dtos.Response.AccountDtoResponse;
+import com.falcbank.falcbank.dtos.Response.TransactionDtoResponse;
 import com.falcbank.falcbank.repositories.TransactionsRepository;
 import com.falcbank.falcbank.services.AccountService;
 import com.falcbank.falcbank.services.TransactionsService;
@@ -29,7 +31,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveAccount(@RequestBody @Valid AccountDtoRequest accountDtoRequest) throws Exception {
+    public ResponseEntity<AccountDtoResponse> saveAccount(@RequestBody @Valid AccountDtoRequest accountDtoRequest) throws Exception {
         return ResponseEntity.status(HttpStatus.CREATED).body(accountService.saveAccount(accountDtoRequest));
     }
 
@@ -37,12 +39,8 @@ public class AccountController {
     @PostMapping("/transferencia")
     public ResponseEntity<Object> transfer(@RequestBody TransactionDtoRequest transactionDtoRequest) throws Exception {
         System.out.println(transactionDtoRequest);
+        accountService.transfer(transactionDtoRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(transactionsService.saveTransaction(transactionDtoRequest));
 
-        accountService.findAccount(transactionDtoRequest);
-
-
-        return null;
     }
-
-
 }

@@ -1,52 +1,52 @@
 package com.falcbank.falcbank.models;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.UUID;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
 
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+
+@Accessors(chain = true)
 @Entity
 @Table(name="TRANSACTIONS")
+@NoArgsConstructor
 public class TransactionsModel {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id_sender;
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id_recipient;
-    @Column(nullable = false)
-    private double value_operation;
-    @Column(nullable = false, length = 30)
-    private LocalDateTime registrationDate;
 
-    public TransactionsModel() {
-        this.id_sender = id_sender;
-        this.id_recipient = id_recipient;
-        this.value_operation = value_operation;
-        this.registrationDate = registrationDate;
+    public Long getId() {
+        return id;
     }
 
-    public long getId_sender() {
-        return id_sender;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setId_sender(long id_sender) {
-        this.id_sender = id_sender;
+    public String getCpfCnpjSender() {
+        return cpfCnpjSender;
     }
 
-    public long getId_recipient() {
-        return id_recipient;
+    public void setCpfCnpjSender(String cpfCnpjSender) {
+        this.cpfCnpjSender = cpfCnpjSender;
     }
 
-    public void setId_recipient(long id_recipient) {
-        this.id_recipient = id_recipient;
+    public String getCpfCnpjRecepient() {
+        return cpfCnpjRecepient;
     }
 
-    public double getValue_operation() {
-        return value_operation;
+    public void setCpfCnpjRecepient(String cpfCnpjRecepient) {
+        this.cpfCnpjRecepient = cpfCnpjRecepient;
     }
 
-    public void setValue_operation(double value_operation) {
-        this.value_operation = value_operation;
+    public BigDecimal getValueOperation() {
+        return valueOperation;
+    }
+
+    public void setValueOperation(BigDecimal valueOperation) {
+        this.valueOperation = valueOperation;
     }
 
     public LocalDateTime getRegistrationDate() {
@@ -56,4 +56,26 @@ public class TransactionsModel {
     public void setRegistrationDate(LocalDateTime registrationDate) {
         this.registrationDate = registrationDate;
     }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(nullable = false)
+    private String cpfCnpjSender;
+    @Column(nullable = false)
+    private String cpfCnpjRecepient;
+    @Column(nullable = false)
+    private BigDecimal valueOperation;
+
+    @Column(nullable = false, length = 30)
+    private LocalDateTime registrationDate;
+
+    public TransactionsModel(Long id, String cpfCnpjSender, String cpfCnpjRecepient, BigDecimal value_operation, LocalDateTime registrationDate) {
+        this.id = id;
+        this.cpfCnpjSender = cpfCnpjSender;
+        this.cpfCnpjRecepient = cpfCnpjRecepient;
+        this.valueOperation = value_operation;
+        this.registrationDate = registrationDate;
+    }
 }
+

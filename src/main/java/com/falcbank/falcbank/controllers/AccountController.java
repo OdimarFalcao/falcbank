@@ -38,9 +38,7 @@ public class AccountController {
 
     @PostMapping("/transferencia")
     public ResponseEntity<Object> transfer(@RequestBody TransactionDtoRequest transactionDtoRequest) throws Exception {
-        System.out.println(transactionDtoRequest);
         accountService.transfer(transactionDtoRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(transactionsService.saveTransaction(transactionDtoRequest));
-
     }
 }

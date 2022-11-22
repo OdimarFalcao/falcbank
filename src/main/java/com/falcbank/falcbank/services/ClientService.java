@@ -2,6 +2,7 @@ package com.falcbank.falcbank.services;
 
 import com.falcbank.falcbank.dtos.Request.ClientDtoRequest;
 import com.falcbank.falcbank.dtos.Response.ClientDtoResponse;
+import com.falcbank.falcbank.exception.GenericExceptionNotFound;
 import com.falcbank.falcbank.models.ClientModel;
 import com.falcbank.falcbank.repositories.ClientRepository;
 import com.falcbank.falcbank.repositories.TransactionsRepository;
@@ -44,7 +45,7 @@ public class ClientService {
     @Transactional
     public ClientModel findByIdClient(Long id) throws Exception {
         ClientModel clientModel = this.clientRepository.findById(id).
-                orElseThrow(() -> new Exception("Client not Found"));
+                orElseThrow(() -> new GenericExceptionNotFound("Client not Found"));
         return clientModel;
     }
 }

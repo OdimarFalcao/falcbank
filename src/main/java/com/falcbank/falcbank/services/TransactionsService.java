@@ -28,14 +28,6 @@ public class TransactionsService {
         this.accountService = accountService;
     }
 
-//        @Transactional
-//    public TransactionDtoResponse saveTransaction(TransactionDtoRequest transactionDtoRequest) throws Exception {
-//        TransactionsModel transactionsModel = new TransactionsModel();
-//        BeanUtils.copyProperties(transactionDtoRequest,transactionsModel);
-//        transactionsModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
-//        transactionsRepository.save(transactionsModel);
-//        return convertEntity(transactionsModel);
-//    }
     @Transactional
     public TransactionsModel saveTransaction(TransactionDtoRequest transactionDtoRequest) throws Exception {
         TransactionsModel transactionsModel = new TransactionsModel();

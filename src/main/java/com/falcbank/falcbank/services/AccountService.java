@@ -4,6 +4,8 @@ import com.falcbank.falcbank.dtos.Request.AccountDtoRequest;
 import com.falcbank.falcbank.dtos.Request.TransactionDtoRequest;
 import com.falcbank.falcbank.dtos.Response.AccountDtoResponse;
 import com.falcbank.falcbank.dtos.Response.TransactionDtoResponse;
+import com.falcbank.falcbank.exception.GenericConflictException;
+import com.falcbank.falcbank.exception.GenericExceptionNotFound;
 import com.falcbank.falcbank.models.AccountModel;
 import com.falcbank.falcbank.models.ClientModel;
 import com.falcbank.falcbank.repositories.AccountRepository;
@@ -53,14 +55,15 @@ public class AccountService {
     @Transactional
     public void transfer(TransactionDtoRequest transactionDtoRequest) throws Exception {
         AccountModel accountSender = (accountRepository.findByClientModel_Id(transactionDtoRequest.getIdSender()).
-                orElseThrow(() -> new Exception("Conta Remetente não encontrada")));
+                orElseThrow(() -> new GenericExceptionNotFound("Conta Remetente não encontrada")));
         AccountModel accountRecepient = (accountRepository.findByClientModel_Id(transactionDtoRequest.getIdRecepient()).
-                orElseThrow(() -> new Exception("Conta Destinatário não encontrada")));
+                orElseThrow(() -> new GenericExceptionNotFound("Conta Destinatário não encontrada")));
 
         if ((transactionDtoRequest.getValueOperation().compareTo(accountSender.getBalance())) == 1)
-            throw new RuntimeException("Saldo Insuficiente");
+            throw new GenericExceptionNotFound("Saldo Insuficiente");
+
         if (Objects.equals(accountSender.getClientModel().getTypeUser(), "lojista"))
-            throw new RuntimeException("Operação não permitida para esse tipo de usuário");
+            throw new GenericConflictException("Operação não permitida para esse tipo de usuário");
 
 
         accountSender.setBalance(accountSender.getBalance().subtract(transactionDtoRequest.getValueOperation()));
@@ -68,7 +71,6 @@ public class AccountService {
 
         accountRepository.save(accountSender);
         accountRepository.save(accountRecepient);
-
 
 
     }

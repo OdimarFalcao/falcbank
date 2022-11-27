@@ -35,7 +35,6 @@ public class ClientService {
         BeanUtils.copyProperties(clientDtoRequest, clientModel);
         clientModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         clientRepository.save(clientModel);
-
         return convertEntity(clientModel);
     }
 

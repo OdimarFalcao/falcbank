@@ -29,12 +29,12 @@ public class TransactionsService {
     }
 
     @Transactional
-    public TransactionsModel saveTransaction(TransactionDtoRequest transactionDtoRequest) throws Exception {
+    public TransactionDtoResponse saveTransaction(TransactionDtoRequest transactionDtoRequest) throws Exception {
         TransactionsModel transactionsModel = new TransactionsModel();
         BeanUtils.copyProperties(transactionDtoRequest, transactionsModel);
-        System.out.println(transactionsModel);
         transactionsModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
-        return transactionsRepository.save(transactionsModel);
+        transactionsRepository.save(transactionsModel);
+        return convertEntity(transactionsModel);
     }
 
     private TransactionDtoResponse convertEntity(TransactionsModel transactionsModel) {

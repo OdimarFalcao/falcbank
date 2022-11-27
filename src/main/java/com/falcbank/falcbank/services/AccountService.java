@@ -71,7 +71,8 @@ public class AccountService {
         accountSender.setBalance(accountSender.getBalance().subtract(transactionDtoRequest.getValueOperation()));
         accountRecepient.setBalance(accountRecepient.getBalance().add(transactionDtoRequest.getValueOperation()));
 
-        notificationService.sender("xboxff14@gmail.com","Transferência feita com sucesso","O usíario x enviou dinheiro pra vc");
+        notificationService.sender(accountRecepient.getClientModel().getEmail(),"Você recebeu uma transferência","O usuário "
+                +accountSender.getClientModel().getName()+" lhe transferiu "+transactionDtoRequest.getValueOperation());
 
         accountRepository.save(accountSender);
         accountRepository.save(accountRecepient);

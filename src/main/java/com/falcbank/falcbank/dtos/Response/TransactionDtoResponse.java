@@ -1,35 +1,33 @@
 package com.falcbank.falcbank.dtos.Response;
 
-import com.falcbank.falcbank.models.ClientModel;
-
 import java.math.BigDecimal;
 
 public class TransactionDtoResponse {
-    private ClientModel clientSender;
-    private ClientModel clienteRecepient;
-    private BigDecimal balance;
+    private Long idSender;
+    private Long idRecepient;
+    private BigDecimal valueOperation;
 
-    public String getClientSender() {
-        return clientSender.getName();
+    public Long getIdClient() {
+        return idSender;
     }
 
-    public void setClientSender(ClientModel clientSender) {
-        this.clientSender = clientSender;
+    public void setIdClient(Long idClient) {
+        this.idSender = idClient;
     }
 
-    public String getClienteRecepient() {
-        return clienteRecepient.getName();
+    public Long getIdRecepient() {
+        return idRecepient;
     }
 
-    public void setClienteRecepient(ClientModel clienteRecepient) {
-        this.clienteRecepient = clienteRecepient;
+    public void setIdRecepient(Long idRecepient) {
+        this.idRecepient = idRecepient;
     }
 
-    public BigDecimal getBalance() {
-        return balance;
+    public BigDecimal getValueOperation() {
+        return valueOperation;
     }
 
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
+    public void setValueOperation(BigDecimal valueOperation) {
+        this.valueOperation = valueOperation;
     }
 }

@@ -3,7 +3,6 @@ package com.falcbank.falcbank.services;
 import com.falcbank.falcbank.dtos.Request.AccountDtoRequest;
 import com.falcbank.falcbank.dtos.Request.TransactionDtoRequest;
 import com.falcbank.falcbank.dtos.Response.AccountDtoResponse;
-import com.falcbank.falcbank.dtos.Response.TransactionDtoResponse;
 import com.falcbank.falcbank.exception.GenericConflictException;
 import com.falcbank.falcbank.exception.GenericExceptionNotFound;
 import com.falcbank.falcbank.models.AccountModel;
@@ -28,12 +27,15 @@ public class AccountService {
     final AccountRepository accountRepository;
     final ClientService clientService;
 
+    final NotificationService notificationService;
+
     @Autowired
     ModelMapper modelMapper = new ModelMapper();
-    public AccountService(ClientRepository clientRepository, AccountRepository accountRepository,ClientService clientService) {
+    public AccountService(ClientRepository clientRepository, AccountRepository accountRepository, ClientService clientService, NotificationService notificationService) {
         this.clientRepository = clientRepository;
         this.accountRepository = accountRepository;
         this.clientService = clientService;
+        this.notificationService = notificationService;
     }
 
     @Transactional
@@ -68,6 +70,8 @@ public class AccountService {
 
         accountSender.setBalance(accountSender.getBalance().subtract(transactionDtoRequest.getValueOperation()));
         accountRecepient.setBalance(accountRecepient.getBalance().add(transactionDtoRequest.getValueOperation()));
+
+        notificationService.sender("xboxff14@gmail.com","Transferência feita com sucesso","O usíario x enviou dinheiro pra vc");
 
         accountRepository.save(accountSender);
         accountRepository.save(accountRecepient);

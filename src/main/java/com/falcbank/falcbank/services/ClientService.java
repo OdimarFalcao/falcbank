@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.UUID;
 
 @Service
 public class ClientService {
@@ -47,5 +48,17 @@ public class ClientService {
         ClientModel clientModel = this.clientRepository.findById(id).
                 orElseThrow(() -> new GenericExceptionNotFound("Client not Found"));
         return clientModel;
+    }
+
+    public ClientDtoResponse update(Long id, ClientDtoRequest clientDtoRequest) {
+        ClientModel clientModel = clientRepository.findById(id).orElseThrow(()-> new GenericExceptionNotFound("Client not Found"));
+
+        BeanUtils.copyProperties(clientDtoRequest,clientModel);
+        clientModel.setId(clientModel.getId());
+        clientModel.setRegistrationDate(clientModel.getRegistrationDate());
+
+        clientRepository.save(clientModel);
+
+        return convertEntity(clientModel);
     }
 }

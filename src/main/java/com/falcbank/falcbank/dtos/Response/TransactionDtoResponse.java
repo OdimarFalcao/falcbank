@@ -3,8 +3,10 @@ package com.falcbank.falcbank.dtos.Response;
 import java.math.BigDecimal;
 
 public class TransactionDtoResponse {
-    private Long idSender;
+
     private Long idRecepient;
+
+    private Long idSender;
     private BigDecimal valueOperation;
 
     public Long getIdClient() {

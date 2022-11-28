@@ -10,7 +10,7 @@ public class AccountDtoRequest {
     //@Length(min = 1,message = "O campo não pode ser vazio ou nulo")
    // @DecimalMax("10.0")
    // @DecimalMin("0.0")
-    @NotNull( message = "Please Enter a valid Deposit Amount")
+    @NotNull
     private BigDecimal balance;
 
     @NotNull(message = "O campo não pode ser vazio ou nulo")
